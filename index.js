@@ -1,20 +1,14 @@
 
-let myObj=
-[
-    {firstName :""},
-    {familyName :""},
-    {title:""},
-    {payPerHour:""}
-]
+
  // {  timeInEvents : [""] }
  // {  timeOutEvents :[""]}
-function createEmployeeRecord([anArray]){ 
+function createEmployeeRecord(anArray){ 
     let myObj=
     [
         {firstName :anArray[0]},
         {familyName :anArray[1]},
-        {title:[2]},
-        {payPerHour:[3]},
+        {title:anArray[2]},
+        {payPerHour:anArray[3]},
         {timeInEvents:""},
         {timeOutEvents:""}
     ]
@@ -32,8 +26,15 @@ createEmployeeRecord()
 let employee3=createEmployeeRecord.bind(myObj)
 employee3(timeOutEvents)*/
 function createEmployeeRecords(theArray){
+    //let theArray2=createEmployeeRecord()
+    //createEmployeeRecords.call(theArray2,theArray)
 //return `${this.firstName} ${this.familyName} ${this.title} ${this.payPerHour} ${line}`
-createEmployeeRecord(myObj)
+ let theArray2=createEmployeeRecord(theArray)
+ return theArray2
+}
+ //let theArray2=createEmployeeRecord()
+//createEmployeeRecords.call(theArray2)
+ 
 
 /*for(let i=0;i<myObj.length;i++){
     return i
@@ -41,11 +42,11 @@ createEmployeeRecord(myObj)
 let allMyEmployees=[]
 allMyEmployees.push(myObj[i])
 return allMyEmployees[i]*/
-return theArray.map(function(q){
-    return createEmployeeRecord(q)
-    
-})
-}
+/*const allTheEmployees= theArray.map(function(j){
+    return createEmployeeRecord(j)
+})*/
+//return allTheEmployees
+
 
 
 
@@ -53,23 +54,30 @@ return theArray.map(function(q){
 //allEmployees(timeInEvents)
 //let allEmployees2=createEmployeeRecord.bind(myObj)
 //allEmployees2(timeOutEvents)
-const date1 =new Date()
-function createTimeInEvent(date){   
+const  date1 =new Date()
+function createTimeInEvent(date){
+     
 //const myDate=date.getHours()
 //const date2=date.getDate()
+// const allTheEmployees=createEmployeeRecord(myObj)
 return `${this.firstName} ${this.familyName}  ${this.title}
      ${this.payPerHour} ${date} `
     
 }
-const myDate=date1.getHours()
-const date2=date1.getDate()
+const allTheEmployees=createEmployeeRecord(["Esther","Wanjiku","Software Developer","80"])
+const myDate=Date.getHours()
+const date2=Date.getDate()
 /*const myObj2=[
     {timeIn:`${myDate}`},
     {hour:`${myDate}`},
     {date5:`${date2}`}
 ]*/
-phrase[0]=`${myDate}`
-createTimeInEvent.call(myObj,phrase[0])
+const phrase={
+   type:"timeIn",
+   hour :Date.getHours(),
+   date:Date.getDate()
+}
+createTimeInEvent.call(allTheEmployees,phrase)
 
 function createTimeOutEvent(date){
 //const myObj3={timeOutEvents:`${date4}`}
@@ -77,30 +85,56 @@ return `${this.firstName} ${this.familyName}  ${this.title}
      ${this.payPerHour} ${date} `     
 }
 //const myObj3=[[type ,"timeOut"],[hour,`${myDate}`],[date,`${date2}`]]
-phrase[1]=`${myDate}`
-createTimeOutEvent.call(myObj,phrase[1])
-function hoursWorkedOnDate(date1){
-const myObj4=phrase[1]
-const myObj5=phrase[0]
+const myObj3=createTimeInEvent()
+const phrase2={
+    type : "TimeOut",
+    hour :`${Date.getHours()}`,
+    date :`${Date.getDate()}`
+}
+createTimeOutEvent.apply(myObj3,phrase2)
+function hoursWorkedOnDate(date){
+const myObj4=createEmployeeRecord(anArray[4])
+const myObj5=createEmployeeRecord(anArray[5])
  const hrsElapsed=`${myObj4}`-`${myObj5}`
  return hrsElapsed
+ 
     }
-   function hoursWorkedOnDate(date){
+   /*function hoursWorkedOnDate(Date){
     const myObj6=date1.getDate()
     const myObj7=date1.getDate()
     const hrsWorked=`${myObj6}`-`${myObj7}`
     return hrsWorked
    }
-   let myEmployees=[]
-   function findEmployeeByFirstName(name){
-      if(`${this.firstName===name}`){
+   let myEmployees=[]*/
+   function findEmployeeByFirstName(allMyEmployees,name){
+    let allCorrectEmployees=allMyEmployees.filter(()=>{
+        allMyEmployees===name
+        return allCorrectEmployees       
+    }
+    )
+}
+const wagesEarnedOnDate=function(date){
+   // let amount=0
+    let date6=createTimeInEvent.call(phrase[2])
+    let date7=createTimeOutEvent.call(phrase2[2])
+    let totalDates=date7-date6
+    //let hr1=createTimeInEvent.call(phrase[1])
+    let hr2=createTimeOutEvent.call(phrase2[1])
+    let totalHrs=hoursWorkedOnDate()
+while(totalHrs>=1){
+    let amount=0
+    amount=totalHrs*createEmployeeRecord[5]
+return amount
+}
+}
+      /*if(allMyEmployees===name){
          return myObj
    }
    else{
     return "undefined"
-   }
-   }
-   findEmployeeByFirstName.call(myObj,`${myObj.firstName}`)
+   }*/
+   
+   //findEmployeeByFirstName.call(myObj,`${myObj.firstName}`)
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
